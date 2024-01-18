@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{15A48AA9-167A-4DFF-98CA-5508D933C5FD}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>AthenaLog</RootNamespace>
+    <AssemblyName>AthenaLog</AssemblyName>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AWSSDK.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604, processorArchitecture=MSIL">
+      <HintPath>..\packages\AWSSDK.Core.3.7.301.7\lib\net45\AWSSDK.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="AWSSDK.S3, Version=3.3.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604, processorArchitecture=MSIL">
+      <HintPath>..\packages\AWSSDK.S3.3.7.305.12\lib\net45\AWSSDK.S3.dll</HintPath>
+    </Reference>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.1.28\lib\net461\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Athena\ApplicationService\Implement\AthenaLogService.cs" />
+    <Compile Include="Athena\ApplicationService\Interface\ISELT202Service.cs" />
+    <Compile Include="Athena\Domain\Base\BaseAthenaFactory.cs" />
+    <Compile Include="Athena\Domain\Base\BaseAthenaTask.cs" />
+    <Compile Include="Athena\Domain\Base\BaseAthenaTaskDetail.cs" />
+    <Compile Include="Athena\Domain\Base\BaseAthenaValidator.cs" />
+    <Compile Include="Athena\Domain\Dto\AthenaTaskDetailLogDto.cs" />
+    <Compile Include="Athena\Domain\Dto\AthenaTaskHistoryDto.cs" />
+    <Compile Include="Athena\Domain\Dto\ResultDto.cs" />
+    <Compile Include="Athena\Domain\Implement\AthenaFactory.cs" />
+    <Compile Include="Athena\Domain\Implement\AthenaRetryErrorTaskDetail.cs" />
+    <Compile Include="Athena\Domain\Implement\AthenaRetryTask.cs" />
+    <Compile Include="Athena\Domain\Implement\AthenaRetryTaskDetail.cs" />
+    <Compile Include="Athena\Domain\Implement\AthenaTask.cs" />
+    <Compile Include="Athena\Domain\Implement\AthenaTaskDetail.cs" />
+    <Compile Include="Athena\Domain\Implement\AthenaTaskValidator.cs" />
+    <Compile Include="Athena\Domain\Interface\IAthenaFactory.cs" />
+    <Compile Include="Athena\Domain\Interface\IAthenaTask.cs" />
+    <Compile Include="Athena\Domain\Interface\IAthenaTaskValidator.cs" />
+    <Compile Include="Athena\Infrastructure\Repository\Dto\AthenaTaskQueryDto.cs" />
+    <Compile Include="Athena\Infrastructure\Repository\Entity\SysAthenaTaskEntity.cs" />
+    <Compile Include="Athena\Infrastructure\Repository\Entity\SysAthenaTaskRecordEntity.cs" />
+    <Compile Include="Athena\Infrastructure\Repository\Entity\SysAthenaTaskRecordFailedEntity.cs" />
+    <Compile Include="Athena\Infrastructure\Repository\Entity\SysAtheneTaskDetailRecordEntity.cs" />
+    <Compile Include="Athena\Infrastructure\Repository\Entity\TableSchemaEntity.cs" />
+    <Compile Include="Athena\Infrastructure\Repository\Implement\AthenaRepository.cs" />
+    <Compile Include="Athena\Infrastructure\Repository\Interface\IAthenaRepository.cs" />
+    <Compile Include="Athena\Infrastructure\Utils\Dto\ResultHelper.cs" />
+    <Compile Include="Athena\Infrastructure\Utils\Enum\AWSFileEnum.cs" />
+    <Compile Include="Athena\Infrastructure\Utils\Hardcode.cs" />
+    <Compile Include="Athena\Infrastructure\Utils\Implement\AWSHelper.cs" />
+    <Compile Include="Athena\Infrastructure\Utils\Implement\FileHelper.cs" />
+    <Compile Include="Athena\Infrastructure\Utils\Interface\IAWSHelper.cs" />
+    <Compile Include="Athena\Infrastructure\Utils\Interface\IFileHelper.cs" />
+    <Compile Include="DBConnectionHelper\DBConnectionHelper.cs" />
+    <Compile Include="DBConnectionHelper\IDBConnectionHelper.cs" />
+    <Compile Include="DBConnectionHelper\MockDBConnectionHelper.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Athena\UnitTest\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\AWSSDK.S3.3.7.305.12\analyzers\dotnet\cs\AWSSDK.S3.CodeAnalysis.dll" />
+    <Analyzer Include="..\packages\AWSSDK.S3.3.7.305.12\analyzers\dotnet\cs\SharedAnalysisCode.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
