@@ -1,9 +1,21 @@
-AppSetting
+# ***AthenaLog***
+# **1.功能說明**
+    將指定table匯出成Athena的Json格式至S3, 提供給Athena查詢
 ---
 
+# **2. 設定檔詳細註釋 (僅列出需注意的項目)**
+ ### 2.1. **appSettings**
+   Key | 說明
+   --- | ---
+   Site | 用於檔案路徑的判斷( **SIT**,**UAT**,**PRD** )
+   perPageCount | 每次作業筆數 
 
-AthenaLog 主流程說明
 ---
+# **3. DB Schema 說明**
+<a title="另開新視窗" href="./AthenaLogSchema.html"><img src="./AthenaLogSchema.png" /></a>
+---
+# **4. AthenaLog 主流程說明**
+
 ```mermaid
 flowchart TD;
 
