@@ -360,6 +360,5 @@ MigrationBackup/
 .ionide/
 
 # Fody - auto-generated XML schema
-*.png
 *.jpg
 *.jpeg
